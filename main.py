@@ -12,7 +12,7 @@ def get_user():
 @app.route('/user', methods=['POST'])
 def create_user():
     data = request.json
-    if 'username' in data and 'password' in data and 'email' in data and 'id' in data and 'name' in data and 'surname':
+    if 'username' in data and 'password' in data and 'email' in data and 'id' in data and 'name' in data and 'surname' in data:
         email = data['email']
         if len(list(filter(lambda x: x['email'] == email, users))) != 0:
             return flask.jsonify({
@@ -51,7 +51,7 @@ def update_user(user_id: int):
 
     data = request.json
     if len(users) >= user_id:
-        if 'username' in data and 'password' in data and 'email' in data and 'id' in data and 'name' in data and 'surname':
+        if 'username' in data and 'password' in data and 'email' in data and 'id' in data and 'name' in data and 'surname' in data:
             users[user_id - 1] = data
             return flask.jsonify({
                 'code': 0,
